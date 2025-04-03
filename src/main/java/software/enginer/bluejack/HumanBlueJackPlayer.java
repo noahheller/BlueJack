@@ -1,8 +1,8 @@
 package software.enginer.bluejack;
 
-public class HumanPlayer extends Player {
+public class HumanBlueJackPlayer extends Player {
 
-  public HumanPlayer(String name) {
+  public HumanBlueJackPlayer(String name) {
     super(name);
   }
 

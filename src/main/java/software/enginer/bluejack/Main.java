@@ -8,13 +8,13 @@ public class Main {
     for (int i = 0; i < humanCount; i++) {
       System.out.println("What is Player" + i + " 's name?");
       String name = Dealer.scanner.nextLine();
-      dealer.addPlayer(new HumanPlayer(name));
+      dealer.addPlayer(new HumanBlueJackPlayer(name));
     }
 
     System.out.println("How many computer players are there");
     int computerCount = Dealer.scanner.nextInt();
     for (int i = 0; i < computerCount; i++) {
-      dealer.addPlayer(new ComputerPlayer("Computer" + (i + 1)));
+      dealer.addPlayer(new ComputerBlueJackPlayer("Computer" + (i + 1)));
     }
     dealer.play();
   }

@@ -1,6 +1,7 @@
 package software.enginer.bluejack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class Player {
@@ -40,42 +41,8 @@ public abstract class Player {
     return str;
   }
 
-  private int getAcedPoints(int aceValue) {
-    int points = 0;
-    for (Card card : cards) {
-      if (card.getNumber() == 1) {
-        points += aceValue;
-      } else {
-        points += card.getNumber();
-      }
-    }
-    return points;
-  }
-
-  public int getMinPoints() {
-    return getAcedPoints(1);
-  }
-
-  public int getMaxPoints() {
-    return getAcedPoints(11);
-  }
-
-  public int getPoints() {
-    int points = 0;
-    int numberOfAces = 0;
-    for (Card card : cards) {
-      if (card.getNumber() == 1) {
-        numberOfAces++;
-        points += 11;
-      } else {
-        points += card.getNumber();
-      }
-    }
-    while (numberOfAces > 0 && points > 21) {
-      points -= 10;
-      numberOfAces--;
-    }
-    return points;
+  public List<Card> getReadOnlyCards() {
+    return Collections.unmodifiableList(cards);
   }
 
   public abstract boolean shouldDraw();

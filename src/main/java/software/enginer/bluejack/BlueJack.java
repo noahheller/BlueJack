@@ -39,11 +39,11 @@ public class BlueJack implements Game {
   @Override
   public void scoreRound(Deck deck, List<Player> players) {
     Player largestScorer = players.get(0);
-    int largestScore = largestScorer.getPoints();
+    int largestScore = getPoints(largestScorer.getReadOnlyCards());
     System.out.println("Player: " + largestScorer.getName() + " Scored " + largestScore + " Points");
     for (int i = 1; i < players.size(); i++) {
       Player scorer = players.get(i);
-      int points = scorer.getPoints();
+      int points = getPoints(scorer.getReadOnlyCards());
       if (points > 21 || largestScore > 21) {
         if (points < largestScore) {
           largestScorer = scorer;
@@ -62,4 +62,41 @@ public class BlueJack implements Game {
 
   }
 
+  private static int getAcedPoints(List<Card> cards, int aceValue) {
+    int points = 0;
+    for (Card card : cards) {
+      if (card.getNumber() == 1) {
+        points += aceValue;
+      } else {
+        points += card.getNumber();
+      }
+    }
+    return points;
+  }
+
+  public static int getMinPoints(List<Card> cards) {
+    return getAcedPoints(cards, 1);
+  }
+
+  public static int getMaxPoints(List<Card> cards) {
+    return getAcedPoints(cards, 11);
+  }
+
+  public static int getPoints(List<Card> cards) {
+    int points = 0;
+    int numberOfAces = 0;
+    for (Card card : cards) {
+      if (card.getNumber() == 1) {
+        numberOfAces++;
+        points += 11;
+      } else {
+        points += card.getNumber();
+      }
+    }
+    while (numberOfAces > 0 && points > 21) {
+      points -= 10;
+      numberOfAces--;
+    }
+    return points;
+  }
 }
