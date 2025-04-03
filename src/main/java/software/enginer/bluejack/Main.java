@@ -2,7 +2,7 @@ package software.enginer.bluejack;
 
 public class Main {
   public static void main(String[] args) {
-    Dealer dealer = new Dealer();
+    Dealer dealer = new Dealer(new BlueJack());
     System.out.println("How many human players are there");
     int humanCount = Dealer.scanner.nextInt();
     for (int i = 0; i < humanCount; i++) {
