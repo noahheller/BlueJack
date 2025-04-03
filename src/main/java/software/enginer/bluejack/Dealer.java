@@ -14,7 +14,8 @@ public class Dealer {
     deck = new Deck();
     players = new ArrayList<>();
   }
-  public void setGame(Game game){
+
+  public void setGame(Game game) {
     this.game = game;
   }
 
@@ -23,9 +24,8 @@ public class Dealer {
   }
 
   public void play() {
-
     game.initilizeHands(deck, players);
     game.playRound(deck, players);
-   game.scoreRound(deck, players); 
+    game.scoreRound(deck, players);
   }
 }
