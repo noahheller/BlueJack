@@ -25,7 +25,7 @@ public class BlueJack implements Game {
       boolean stillDrawing = true;
       while (stillDrawing) {
         stillDrawing = false;
-        System.out.println(player.getName() + " You have a " + player.enumerateHand());
+        System.out.println(player.getName() + " You have a " + player.getHandAsString());
         System.out.println(player.getName() + " Would you like to 'hit' or 'stay'");
         if (player.shouldDraw()) {
           stillDrawing = true;
