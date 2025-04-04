@@ -5,6 +5,7 @@ public class Main {
     Dealer dealer = new Dealer(new BlueJack());
     System.out.println("How many human players are there");
     int humanCount = Dealer.scanner.nextInt();
+    Dealer.scanner.nextLine();
     for (int i = 0; i < humanCount; i++) {
       System.out.println("What is Player" + i + " 's name?");
       String name = Dealer.scanner.nextLine();
@@ -13,6 +14,7 @@ public class Main {
 
     System.out.println("How many computer players are there");
     int computerCount = Dealer.scanner.nextInt();
+    Dealer.scanner.nextLine();
     for (int i = 0; i < computerCount; i++) {
       dealer.addPlayer(new ComputerBlueJackPlayer("Computer" + (i + 1)));
     }

@@ -13,6 +13,7 @@ public class Dealer {
   public Dealer(Game game) {
     deck = new Deck();
     players = new ArrayList<>();
+    this.game = game;
   }
 
   public void setGame(Game game) {
